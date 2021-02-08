@@ -1,7 +1,7 @@
 import React from "react";
 
 const DashboardPage = () => {
-  return (
+  return ( 
     <div className="card">
       <div className="cardHeader">Chatrooms</div>
       <div className="cardBody">
