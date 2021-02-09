@@ -3,6 +3,7 @@ const User = mongoose.model("User");
 const sha256 = require("js-sha256");
 const jwt = require("jwt-then");
 
+
 exports.register = async (req, res) => {
   const { name, email, password } = req.body;
 
@@ -30,6 +31,17 @@ exports.register = async (req, res) => {
     message: "User [" + name + "] registered successfully!",
   });
 };
+// login with passport authontication 
+// exports.passportLogin=async(req,res,next)=>{
+
+//     passport.authenticate('local',{
+//         successRedirect:'/dashboard',
+//         failureRedirect:'/user/login',
+//         //failureFlash:true
+//     })(req,res,next)
+
+// }
+
 
 exports.login = async (req, res) => {
   const { email, password } = req.body;

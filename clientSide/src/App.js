@@ -7,11 +7,25 @@ import RegisterPage from "./Pages/RegisterPage";
 import DashboardPage from "./Pages/DashbordPage";
 import IndexPage from "./Pages/indexPage";
 import ChatroomPage from "./Pages/ChatRoomPage";
+import { io } from "socket.io-client";
 
 
 function App() {
-  return (
+   const [socket,setSocket]=React.useState(null)
+   const setupSocket=()=>{
+    const toket=localStorage.getItem('CC_Token')
+    if (toket.length>0&&!socket) {
+      const socket = io("http://localhost:8000", {
+        query: {
+          token: localStorage.getItem("CC_Token"),
+        },
+      });
+    }
+
     
+   }
+
+  return (
     <BrowserRouter>
       <Switch>
         <Route path="/" component={IndexPage} exact />
