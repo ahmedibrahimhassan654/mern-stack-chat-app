@@ -16,6 +16,7 @@ module.exports = function(passport) {
           return done(null, false, { message: 'That email is not registered' });
         }
 
+        
         // Match password
         bcrypt.compare(sha256(password + process.env.SALT), user.password, (err) => {
           if (err) throw err;

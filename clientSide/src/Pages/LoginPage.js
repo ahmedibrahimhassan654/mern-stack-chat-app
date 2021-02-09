@@ -33,6 +33,33 @@ const LoginPage = (props) => {
           makeToast("error", err.response.data.message);
       });
   };
+  const passportLogin=()=>{
+    const email = emailRef.current.value;
+    const password = passwordRef.current.value;
+
+    axios
+      .post("http://localhost:8000/user/passportlogin", {
+        email,
+        password,
+      })
+      .then((response) => {
+   
+        try {
+          if (response.data==='Successfully Authenticated') {
+            makeToast("success", response.data);
+           props.history.push("/dashboard");
+       } else{
+         console.log(response.data);
+         makeToast("error", response.data);
+         props.history.push("/login");
+       }
+        } catch (error) {
+          return error
+        }
+       
+      })
+    
+  }
 
   return (
     <div className="card">
@@ -59,6 +86,8 @@ const LoginPage = (props) => {
           />
         </div>
         <button onClick={loginUser}>Login</button>
+        <br/>
+        <button onClick={passportLogin} className='margin-top: 100px'>Login with passport </button>
       </div>
     </div>
   );
