@@ -17,6 +17,7 @@ module.exports = function(passport) {
         }
 
         
+
         // Match password
         bcrypt.compare(sha256(password + process.env.SALT), user.password, (err) => {
           if (err) throw err;

@@ -2,8 +2,11 @@ import React from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
-const DashboardPage = () => {
+const DashboardPage = (props) => {
   const [chatrooms, setChatrooms] = React.useState([]);
+
+
+
   const getChatrooms = () => {
     axios
       .get("http://localhost:8000/chatroom", {
@@ -12,7 +15,7 @@ const DashboardPage = () => {
         },
       })
       .then((response) => {
-        console.log(response);
+        // console.log(response);
         setChatrooms(response.data);
       })
       .catch((err) => {
